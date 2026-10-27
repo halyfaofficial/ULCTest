@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # Menggunakan versi Ubuntu yang stabil untuk build Android
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout Repository
@@ -20,7 +20,9 @@ jobs:
         distribution: 'temurin'
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+      uses: gradle/actions/setup-gradle@v4
+      with:
+        cache-read-only: true  # Mematikan penyimpanan cache otomatis untuk menghindari error 400
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
