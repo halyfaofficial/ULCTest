@@ -19,19 +19,17 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Install Gradle via APT
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y gradle
-
-    - name: Initialize Gradle Project Wrapper
-      run: |
-        gradle wrapper --gradle-version 8.0
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: |
+        if [ ! -f ./gradlew ]; then
+          gradle wrapper --gradle-version 8.0
+        fi
+        chmod +x gradlew
 
-    - name: Build APK with Gradle Wrapper
+    - name: Build APK with Gradle
       run: ./gradlew assembleDebug
 
     - name: Upload APK Artifact
