@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 class ExamActivity : AppCompatActivity() {
 
     private lateinit var webViewExam: WebView
-    private val examUrl = "https://your-exam-portal.com" // URL PORTAL UJIAN
+    private val examUrl = "https://ulc.unibabwi.ac.id" // URL PORTAL UJIAN
     private var isExamFinished = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
